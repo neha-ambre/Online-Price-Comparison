@@ -1,0 +1,210 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<style>
+        body{
+          /* background-color:skyblue;  */
+            background-image: url("Images/background.jpg");
+            background-repeat:no-repeat;
+            background-size: 4000px;
+        }
+        .navbar-brand img {
+          width: 8vw;
+        }
+        .header {
+          color: rgb(255, 225, 0);
+          text-shadow: 3px 3px 2px red;
+          font-family: Old English Text MT;
+          font-size: 3.7vw;
+          padding: 0px;
+        }
+        h1{
+          color:rgb(214, 34, 73);
+          font-family:Berlin Sans FB Demil;
+          font-weight: bold;
+        }
+        .nav-form-text {
+          font-size: 1vmax;
+        }
+        ul li .nav-link,
+        .btn {
+          font-size: 1vmax;
+        }
+        .header-2 {
+          font-family: cursive;
+          font-size: 2.5vw;
+          text-decoration: underline;
+          text-align: center;
+          color: rgb(9, 9, 101);
+          font-weight: bold;
+          text-shadow: 2px 2px 2px rgb(0, 170, 255);
+        }
+        .card-text {
+          font-family: Verdana;
+          color: orange;
+          font-size: 1.2vw;
+        }
+        .price {
+          font-family: Verdana;
+          font-size: 1.2vw;
+          font-weight: bold;
+        }
+        .add_to_cart {
+          font-family: Verdana;
+          font-size: 1vw;
+          font-weight: bold;
+        }
+        .custom-footer h3,
+        a {
+          font-size: 1.2vw;
+        }
+        .custom-footer i {
+          font-size: 1.8vw;
+          padding: 0px 10px 0px 10px;
+        }
+        .partition {
+          font-size: 1.2vw;
+        }
+        .custom-footer ul li {
+          list-style-type: none;
+          display: inline;
+        }
+        .card-title {
+          font-family: Cambria;
+          font-weight: bold;
+          font-size: 2vw;
+        }
+        .amenities {
+          width: 5vw;
+          border-radius: 5vw;
+        }
+        .amenities-text {
+          font-size: 1.2vw;
+          font-weight: bold;
+        }
+</style>
+</head>
+<body>
+   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Shopping.com</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="D:/TY Lab/JOC/Price_Comparison/priceComparison/templates/contact.html">Contact Us</a>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+        <div class="d-flex m-lg-5 justify-content-center " style="box-shadow: 2px 2px 20px 5px whitesmoke;">
+          <div class="container-fluid bg-light px-4 pb-4">
+              <div class="row">
+                <div class="col-4" style="padding: 150px 10px 100px 50px ;">
+          
+                  <h3><i class="bi bi-geo-alt-fill"></i> Location</h3>
+                  <p>Pune,India</p>
+          
+                  <h3><i class="bi bi-telephone-fill"></i> Call Us</h3>
+                  <p>+91 8849653215</p>
+          
+                  <h3><i class="bi bi-envelope-fill"></i> Email</h3>
+                  <p>Maha_food7@gmail.com</p>
+          
+                </div>
+                <div class="col-7">
+                  <h1 class="text-center">Contact Us</h1>
+                  <br>
+                  <div class="form row ">
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12 col-12">
+                      <lable>First Name</lable>
+                      <input type="text" class="form-control" placeholder="First Name">
+                    </div>
+                    <br>
+                
+                    <div class="form-group col-lg-6 col-md-12 col-sm-12 col-12">
+                      <lable>Last Name</lable>
+                      <input type="text" class="form-control" placeholder="Last Name">
+                    </div>
+                
+                    <br>
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Select your Query</label>
+                    <select class="form-control" id="exampleFormControlSelect1">
+                      <option>Select</option>
+                      <option>Packaging</option>
+                      <option>Quality</option>
+                      <option>Delivery</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+                  <br>
+                  <div class="form-group">
+                    <lable for="exampleFormControlTextarea1">Elaborate your concern </lable>
+                    <br>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div>
+                  <br>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">
+                      I'm not a robot
+                    </label>
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="container justify-content-center bg-light ">
+          </div>
+          <div class="container-fluid bg-dark text-light custom-footer pb-1">
+            <div class="text-center py-1">
+              <div>
+                <h3>Follow Us</h3>
+              </div>
+              <div>
+                <i class="bi bi-facebook text-primary"></i>
+                <i class="bi bi-twitter text-primary rounded-circle"></i>
+                <i class="bi bi-instagram rounded-circle" style="color: rgb(214, 34, 73);"></i>
+              </div>
+            </div>
+            <div class="text-center">
+              <ul>
+                <li><a href="About Us.html" class="text-light">About Us</a></li>
+                <li class="partition">|</li>
+                <li><a href="#" class="text-light">FAQ</a></li>
+                <li class="partition">|</li>
+                <li><a href="#" class="text-light">Contact Us</a></li>
+                <li class="partition">|</li>
+                <li><a href="#" class="text-light">Terms of Use</a></li>
+                <li class="partition">|</li>
+                <li><a href="#" class="text-light">Privacy Policy</a></li>
+                <li class="partition">|</li>
+                <li><a href="#" class="text-light">Refund Policy</a></li>
+                <li class="partition">|</li>
+                <li><a href="#" class="text-light">© 2020 All Rights are Reserved</a> </li>
+              </ul>
+            </div>
+          </div>
+ </body>
+</html>
