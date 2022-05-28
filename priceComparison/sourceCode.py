@@ -1,10 +1,13 @@
 ##putting it all together
-import csv
 from bs4 import BeautifulSoup
 import urllib
 
 #firefox & chrome
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+
+chrome_options = Options()
+chrome_options.add_argument("--headless")
 
 ##getting the page
 def get_amazon_url(search_term):
@@ -32,22 +35,26 @@ def extract_amazon_record(item):
         price_parent = item.find('span', 'a-price')
         price = price_parent.find('span', 'a-offscreen').text
     except AttributeError:
-        return
+        price =''
     
+    #rank and rating
     try:
-        #rank and rating
         rating=item.i.text
-        rating_cnt=item.find('span', {'class':'a-size-base s-underline-text'}).text
     except AttributeError:
         rating=''
-        rating_cnt=''
     
+    try:
+        rating_cnt=item.find('span', {'class':'a-size-base s-underline-text'}).text
+    except AttributeError:
+        rating_cnt=''
+
     try:
         image = item.find('img',{'class' : 's-image'})
         imageSrc = image.get('src')
         print(imageSrc)
     except AttributeError:
         imageSrc = ""
+
     result = (description, price, rating, rating_cnt, prod_url,imageSrc)    
     return result
 
@@ -60,22 +67,26 @@ def extract_flipkart_record(item):
     try:
         price = soup.find( class_ = '_30jeq3 _16Jk6d').get_text().strip()
     except:
-        return
+        price = ''
     try:
         rating = soup.find( class_ = '_3LWZlK').get_text().strip()
-        rating_cnt = soup.find( class_ = '_2_R_DZ').get_text().strip()
     except:
         rating=''
+
+    try:
+        rating_cnt = soup.find( class_ = '_2_R_DZ').get_text().strip()
+    except:
         rating_cnt=''
 
     try:
-       
         print(soup.find('img', class_ = '_396cs4 _3exPp9'))
-        img = soup.find('div', class_ = 'CXW8mj').img
-        print(img)
-        #img = soup.find('img', class_ = '_396cs4 _3exPp9')
-        if img :
-            imageSrc = img['src']
+        print(soup.find('div', class_ = '_3ywSr_').div,"***********")
+        div1 = soup.find('div', class_ = 'CXW8mj')
+        div2 = soup.find('div', class_ = '_3ywSr_')
+        if div1 is not None:
+            imageSrc = div1.img['src']
+        elif div2 is not None:
+            imageSrc = div2.div.img['src']
         else :
             imageSrc = ""
     except AttributeError:
@@ -88,7 +99,7 @@ def extract_flipkart_record(item):
 def main(search_term):
     """Run main program routing"""
     #startup webdrive
-    driver = webdriver.Chrome("C:/Users/ishas/Downloads/chromedriver_win32/chromedriver.exe")
+    driver = webdriver.Chrome("C:/Users/ishas/Downloads/chromedriver_win32/chromedriver.exe",chrome_options=chrome_options)
     
     records = []
 #     url = 'https://www.amazon.com'

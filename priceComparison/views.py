@@ -7,7 +7,7 @@ def index(request):
     return render(request, 'index.html')
    
 def contact(request):
-     return render(request, 'templates/contact.html')
+     return render(request, 'contact.html')
 
 def about(request):
     return HttpResponse("we are at about")
@@ -19,4 +19,5 @@ def productView(request):
         productName = request.POST.get('product')
         records = sourceCode.main(productName)
         print(records)
+        
     return render(request, 'productView.html', {'productName':productName,'records':records})
