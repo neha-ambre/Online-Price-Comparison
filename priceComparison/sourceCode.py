@@ -99,7 +99,7 @@ def extract_flipkart_record(item):
 def main(search_term):
     """Run main program routing"""
     #startup webdrive
-    driver = webdriver.Chrome("C:/Users/ishas/Downloads/chromedriver_win32/chromedriver.exe",chrome_options=chrome_options)
+    driver = webdriver.Chrome("C:/Users/ishas/Downloads/chromedriver_win32 (1)/chromedriver.exe",chrome_options=chrome_options)
     
     records = []
 #     url = 'https://www.amazon.com'
@@ -130,12 +130,5 @@ def main(search_term):
     if record and record not in records:
         records.append(record)
 
-    #driver.close()
-    
-    # #save data to csv file
-    # with open('results.csv','w',newline='',encoding='utf-8') as f:
-    #     writer = csv.writer(f)
-    #     writer.writerow(['Description', 'Price', 'Rating', 'ReviewCount', 'Url'])
-    #     writer.writerows(records)
-
+    driver.close()
     return records

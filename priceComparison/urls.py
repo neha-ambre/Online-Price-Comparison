@@ -24,4 +24,5 @@ urlpatterns = [
     path('contact', views.contact, name='ContactUs'),
     path('about', views.about, name='AboutUs'),
     path('productView', views.productView, name='productView'),
+    path('convertSpeechToText/', views.convertSpeechToText, name='convertSpeechToText'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
