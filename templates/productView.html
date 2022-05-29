@@ -17,15 +17,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
- 
+    <link href="https://fonts.googleapis.com/css2?family=Tiro+Devanagari+Sanskrit&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300&family=Tiro+Devanagari+Sanskrit&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+
   <style>
       *{ 
-        font-family: 'Courgette', cursive;
-      }	
+        font-family: 'Ubuntu', sans-serif;
+      }		
       body{
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+		background-color: rgb(192,221,249)
+      }
+      .navbar-color{
+        background-image: linear-gradient(to right, #000066 , skyblue);
       }
       .custom-footer{
         margin-top:auto;
@@ -51,72 +58,124 @@
        }
        .img-size{
          height:300px;
+		 width:auto;
        }
+	   .title{
+		   height: 100px;
+		   font-size:20px;
+		   padding: 0px 25px 0px 25px;
+	   }
+	   .price{
+			height: 80px;
+			font-size:20px;
+			padding: 0px 0px 0px 25px;
+	   }
+	   .rating{
+			height: 80px;
+			font-size:20px;
+			padding: 0px 0px 0px 25px;
+	   }
+	   .redirect-btn{
+			width:200px;
+			font-weight:bold;
+	   }
+       .card{
+		   border-radius: 25px;
+	   }
+	   .unavailabe{
+		   font-size:25px;
+		   color:gray;
+		   font-style:italic;
+	   }
   </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Shopping.com</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-link active" aria-current="page" href="/">Home</a>
-            <a class="nav-link" href="/contact">Contact</a> Us</a>
-          </div>
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-color">
+      <div class =" mx-3 ">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50px" height="50px" fill="white" class="bi bi-cart3 ml-3" viewBox="0 0 16 16">
+          <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </svg>
+      </div>
+      <a class="navbar-brand" href="#" style="font-weight:bold;font-size:25px">Shoppers' Zone</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <a class="nav-link" href="/contact">Contact Us</a>
         </div>
       </div>
     </nav>
 
-    <div class="container-fluid mx-0 px-0 py-2 ">
-      <div class="bg-light col-12 text-center ">
-        <h1>You have enter {{productName}}</h1>
+    <div class="container-fluid mx-0 px-0 pb-5 pt-3">
+      <div class="col-12 text-center ">
+        <h5>Showing results for</h5>
+		<h2 class="font-weight-bold ">{{productName}}</h2>
       </div>
-      <div class="container row col-12 h-auto align-box">
-        <div class="amazon_product card bg-light shadow-lg col-4 pt-2 px-0 py-0 mx-3 shadow-lg">
+      <div class="container row col-12 h-auto align-box pt-4">
+        <div class="card bg-light shadow-lg col-5 py-3 px-0 mx-3 shadow-lg">
           {% if records.0 != None and records.0.0 != "" and records.0.1 != "" and records.0.4 != "" %}  
             <div class="row no-gutters h-100">
-                <div class="col-12">
+                <div class="col-12 d-flex justify-content-center">
                     <img src="{{records.0.5}}" class="card-img img-size">
                 </div>
-                <h5 class="card-title p-2">{{records.0.0}}</h5>
-                <p class="card-text p-2">{{records.0.2}}</p>
-                <div class="card-body col-12 px-2">
-                    <p class="p-lg-1 price px-0"> {{records.0.1}}</p>
-                    <a href="{{records.0.4}}" class="btn btn-success btn-block ">Visit Amazon</a>
+				<div class="card-title pb-0 mb-0 pt-3 title">
+					<h5 >{{records.0.0}}</h5>
+				</div>
+                <div class="card-body col-12 p-0 m-0">
+					<div class="m-1 price">
+						<label class = "font-weight-bold">Price</label>
+						<p>{{records.0.1}}</p>
+					</div>
+					<div class="m-1 rating">
+						<label class = "font-weight-bold">Ratings</label>
+						<p>{{records.0.2}}</p>
+					</div>
+					<div class="d-flex justify-content-center">
+						<a href="{{records.0.4}}" class="btn btn-primary redirect-btn">Visit Amazon</a>
+					</div>
               </div>
             </div>
           {% else %}
               <div class="row no-gutters h-100">
-                <div class="card-body col-12 px-2">
-                    <p class="p-lg-1 price px-0"> Product Not Available !!</p>
+                <div class="card-body col-12 px-2 d-flex justify-content-center align-items-center">
+                    <p class="p-lg-1 px-0 unavailabe"> Product not Available !!</p>
                 </div>
               </div>
           {% endif %}
         </div>
-        <div class=" flipcart_product card bg-light shadow-lg col-4 pt-2 px-0 py-0 mx-3 shadow-lg">
-          {% if records.1 != None and records.1.0 != "" and records.1.1 != "" and records.1.4 != "" %}
-            <div class="row no-gutters h-100">
-                <div class="col-12">
-                    <img src="{{records.1.5}}" class="card-img img-size">
-                </div>
-                <h5 class="card-title p-2">{{records.1.0}}</h5>
-                <p class="card-text p-2">{{records.1.2}}</p>
-                <div class="card-body col-12 px-2">
-                    <p class="p-lg-1 price px-0"> {{records.1.1}}</p>
-                    <a href="{{records.1.4}}" class="btn btn-success btn-block ">Visit Flipkart</a>
-              </div>
-            </div>
-          {% else %}
-            <div class="row no-gutters h-100">
-              <div class="card-body col-12 px-2">
-                  <p class="p-lg-1 price px-0"> Product Not Available !!</p>
-              </div>
-            </div>
-          {% endif %}
-        </div>
+        <div class="card bg-light shadow-lg col-5 py-3 px-0 mx-3 shadow-lg">
+			{% if records.1 != None and records.1.0 != "" and records.1.1 != "" and records.1.4 != "" %}  
+			  <div class="row no-gutters h-100">
+				  <div class="col-12 d-flex justify-content-center">
+					  <img src="{{records.1.5}}" class="card-img img-size">
+				  </div>
+				  <div class="card-title pb-0 mb-0 pt-3 title">
+					  <h5 >{{records.1.0}}</h5>
+				  </div>
+				  <div class="card-body col-12 p-0 m-0">
+					  <div class="m-1 price">
+						  <label class = "font-weight-bold">Price</label>
+						  <p>{{records.1.1}}</p>
+					  </div>
+					  <div class="m-1 rating">
+						  <label class = "font-weight-bold">Ratings</label>
+						  <p>{{records.1.2}} out of 5 stars</p>
+					  </div>
+					  <div class="d-flex justify-content-center">
+						  <a href="{{records.1.4}}" class="btn btn-primary redirect-btn">Visit Flipkart</a>
+					  </div>
+				</div>
+			  </div>
+			{% else %}
+				<div class="row no-gutters h-100">
+				  <div class="card-body col-12 px-2 d-flex justify-content-center align-items-center">
+					  <p class="p-lg-1 px-0 unavailabe"> Product not Available !!</p>
+				  </div>
+				</div>
+			{% endif %}
+		</div>
         
       </div>
     </div>
