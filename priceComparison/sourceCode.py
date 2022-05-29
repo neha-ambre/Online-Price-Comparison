@@ -34,14 +34,17 @@ def extract_amazon_record(item):
         #price
         price_parent = item.find('span', 'a-price')
         price = price_parent.find('span', 'a-offscreen').text
+        price=price[1:]
+        price=int(price)
     except AttributeError:
-        price =''
+        price = 0
     
     #rank and rating
     try:
         rating=item.i.text
+        rating = float(rating.split(" ")[0])
     except AttributeError:
-        rating=''
+        rating=0.0
     
     try:
         rating_cnt=item.find('span', {'class':'a-size-base s-underline-text'}).text
@@ -66,12 +69,16 @@ def extract_flipkart_record(item):
     description = soup.find( class_ = 'B_NuCI').text.strip() # Will get text from html tags
     try:
         price = soup.find( class_ = '_30jeq3 _16Jk6d').get_text().strip()
+        price=price[1:]
+        price=int(price)
     except:
-        price = ''
+        price = 0
     try:
+        
         rating = soup.find( class_ = '_3LWZlK').get_text().strip()
+        rating = float(rating.split(" ")[0])
     except:
-        rating=''
+        rating=0.0
 
     try:
         rating_cnt = soup.find( class_ = '_2_R_DZ').get_text().strip()

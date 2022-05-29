@@ -87,6 +87,18 @@
 		   color:gray;
 		   font-style:italic;
 	   }
+	   .best-deal-icon-amazon{
+			position: absolute;
+			bottom:100px;
+			width:120px;
+			left:440px;
+	   }
+	   .best-deal-icon-flipkart{
+			position: absolute;
+			bottom:100px;
+			width:120px;
+			right:240px;
+		}
   </style>
 </head>
 <body>
@@ -115,7 +127,7 @@
       </div>
       <div class="container row col-12 h-auto align-box pt-4">
         <div class="card bg-light shadow-lg col-5 py-3 px-0 mx-3 shadow-lg">
-          {% if records.0 != None and records.0.0 != "" and records.0.1 != "" and records.0.4 != "" %}  
+          {% if records.0 != None and records.0.0 != "" and records.0.1 != 0 and records.0.4 != "" %}  
             <div class="row no-gutters h-100">
                 <div class="col-12 d-flex justify-content-center">
                     <img src="{{records.0.5}}" class="card-img img-size">
@@ -126,11 +138,11 @@
                 <div class="card-body col-12 p-0 m-0">
 					<div class="m-1 price">
 						<label class = "font-weight-bold">Price</label>
-						<p>{{records.0.1}}</p>
+						<p>&#8377;{{records.0.1}}</p>
 					</div>
 					<div class="m-1 rating">
 						<label class = "font-weight-bold">Ratings</label>
-						<p>{{records.0.2}}</p>
+						<p>{{records.0.2}} out of 5 stars</p>
 					</div>
 					<div class="d-flex justify-content-center">
 						<a href="{{records.0.4}}" class="btn btn-primary redirect-btn">Visit Amazon</a>
@@ -146,7 +158,7 @@
           {% endif %}
         </div>
         <div class="card bg-light shadow-lg col-5 py-3 px-0 mx-3 shadow-lg">
-			{% if records.1 != None and records.1.0 != "" and records.1.1 != "" and records.1.4 != "" %}  
+			{% if records.1 != None and records.1.0 != "" and records.1.1 != 0 and records.1.4 != "" %}  
 			  <div class="row no-gutters h-100">
 				  <div class="col-12 d-flex justify-content-center">
 					  <img src="{{records.1.5}}" class="card-img img-size">
@@ -157,7 +169,7 @@
 				  <div class="card-body col-12 p-0 m-0">
 					  <div class="m-1 price">
 						  <label class = "font-weight-bold">Price</label>
-						  <p>{{records.1.1}}</p>
+						  <p>&#8377;{{records.1.1}}</p>
 					  </div>
 					  <div class="m-1 rating">
 						  <label class = "font-weight-bold">Ratings</label>
@@ -176,7 +188,33 @@
 				</div>
 			{% endif %}
 		</div>
-        
+        {% if records.1 != None and records.1 != None and records.0.1 < records.1.1 %}
+			<div class = "best-deal-icon-amazon">
+				<img class="d-block w-100" src="{% static '/Media/done.webp' %}" >
+			</div>
+		{% elif records.0 != None and records.1 != None and records.0.1 > records.1.1  %}
+			<div class = "best-deal-icon-flipkart">
+				<img class="d-block w-100" src="{% static '/Media/done.webp' %}" >
+			</div>
+		{% elif records.0 != None and records.1 != None and records.0.1 == records.1.1  %}
+			{% if records.0.2 > records.1.2  %}
+				<div class = "best-deal-icon-amazon">
+					<img class="d-block w-100" src="{% static '/Media/done.webp' %}" >
+				</div>
+			{% else %}
+				<div class = "best-deal-icon-flipkart">
+					<img class="d-block w-100" src="{% static '/Media/done.webp' %}" >
+				</div>
+			{% endif %} 
+		{% elif  records.0 != None %}
+			<div class = "best-deal-icon-flipkart">
+				<img class="d-block w-100" src="{% static '/Media/done.webp' %}" >
+			</div>
+		{% elif records.1 != None %}
+			<div class = "best-deal-icon-amazon">
+				<img class="d-block w-100" src="{% static '/Media/done.webp' %}" >
+			</div>
+		{% endif %}
       </div>
     </div>
     <footer>
